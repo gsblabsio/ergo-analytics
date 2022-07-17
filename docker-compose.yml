@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  node:
+    build:
+      context: ./node
+    env_file: .env
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: 1m
+    volumes:
+      - ergo_data:/home/ergo/.ergo
+    ports:
+      - 80:9030
+      - 9053:9053
+  chain-grabber:
+    build:
+      context: ./chain-grabber
+    env_file: .env
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: 1m
+  postgres:
+    image: postgres:13
+    environment:
+      - PGDATA=/pgdata
+    env_file: .env
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: 1m
+    volumes:
+      - postgres_data:/pgdata
+    ports:
+      - 5432:5432
+
+volumes:
+  ergo_data:
+    driver: local
+  postgres_data:
+    driver: local
