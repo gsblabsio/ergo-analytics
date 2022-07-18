@@ -7,13 +7,14 @@
 cp sample.env .env
 ```
 
-### Set the API_KEY in .env to a group of strings 
+### Update .env config variables to something secure
 ```
-banana apple big pear
+API_KEY=banana apple big pear
+POSTGRES_USER=ergo
+POSTGRES_PASSWORD=changeme
 ```
-### Set POSTGRES_USER and POSTGRES_PASSWORD in .env to something secure 
 
-### Start the Nodee / Chain Grabber
+### Start the Node / Chain Grabber
 ```
 docker-compose up -d
 ``` 
@@ -49,6 +50,5 @@ docker-compose exec node status
 ```
 psql -U <POSTGRES_USER> explorer
 ```
-
 
 
