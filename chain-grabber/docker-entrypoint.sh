@@ -9,6 +9,7 @@ sed -i "s/db.pass = \"1234\"/db.pass = \"$POSTGRES_PASSWORD\"/g" modules/chain-g
 export PGPASSWORD="$POSTGRES_PASSWORD"
 
 if [ "$( psql -h postgres -U "$POSTGRES_USER" -XtAc "SELECT 1 FROM pg_database WHERE datname='explorer'" )" != '1' ]
+then
 	psql -h postgres -U "$POSTGRES_USER" -c "CREATE DATABASE explorer"
 	cat modules/explorer-core/src/main/resources/db/V9__Schema.sql | psql -h postgres -U "$POSTGRES_USER" explorer
 fi

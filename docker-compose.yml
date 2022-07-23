@@ -12,12 +12,16 @@ services:
     volumes:
       - ergo_data:/home/ergo/.ergo
     ports:
-      - 80:9030
-      - 9053:9053
+      - "80:9053"
   chain-grabber:
     build:
       context: ./chain-grabber
+      args:
+        - EXPLORER_VERSION
     env_file: .env
+    depends_on:
+      - postgres
+      - node
     logging:
       driver: 'json-file'
       options:
@@ -34,7 +38,7 @@ services:
     volumes:
       - postgres_data:/pgdata
     ports:
-      - 5432:5432
+      - "5432:5432"
 
 volumes:
   ergo_data:

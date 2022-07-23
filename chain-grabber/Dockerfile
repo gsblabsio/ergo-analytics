@@ -1,5 +1,7 @@
 FROM debian:latest
 
+ARG EXPLORER_VERSION
+
 # Preparing the RPi
 RUN apt update -y
 RUN apt full-upgrade -y
@@ -17,14 +19,14 @@ RUN apt update -y
 RUN apt install sbt -y
 
 # Download and unzip precompiled JAR
-RUN wget -O explorer-backend-9.4.3.zip https://github.com/ergoplatform/explorer-backend/archive/refs/tags/9.4.3.zip
-RUN unzip explorer-backend-9.4.3
-RUN rm explorer-backend-9.4.3.zip
+RUN wget -O explorer-backend-$EXPLORER_VERSION.zip https://github.com/ergoplatform/explorer-backend/archive/refs/tags/$EXPLORER_VERSION.zip
+RUN unzip explorer-backend-$EXPLORER_VERSION
+RUN rm explorer-backend-$EXPLORER_VERSION.zip
 
 # Install PostgreSQL client
 RUN apt install postgresql-client -y
 
 # Set up entrypoint
 ADD ./docker-entrypoint.sh .
-WORKDIR /explorer-backend-9.4.3
+WORKDIR /explorer-backend-$EXPLORER_VERSION
 ENTRYPOINT ["/docker-entrypoint.sh"]
