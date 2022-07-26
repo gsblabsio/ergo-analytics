@@ -1,6 +1,6 @@
 # ergo-analytics
 
-## To get up and running:
+## Quickstart
 
 ### Create a .env file
 ```
@@ -14,61 +14,66 @@ POSTGRES_USER=ergo
 POSTGRES_PASSWORD=changeme
 ```
 
-### If you already have Postgres running locally, change the port for the postgres service in docker-compose.yml.  For example, 5433:5432 will expose it as 5433 locally (it will remain 5432 internally).
-```
-    ports:
-      - "5433:5432"
-```
-
-
-### If you already have something running on port 80, change the port for the node service.  For example, 8080:9053 would expose it as 8080.
-```
-    ports:
-      - "8080:9053"
-```
-
-
 ### Start the Node / Chain Grabber
 ```
 docker-compose up -d
 ``` 
 
-## To get the current info about your node:
+## Tips
+
+### Current info about your node:
 ```
 docker-compose exec node info
 ```
 
-## To initialize your wallet:
+### Initialize node wallet:
 ```
 docker-compose exec node initialize
 ```
 
 This will return a 15 word mnemonic seed phrase. It can only be run once.  You must copy this sentence and save it in a safe place. This sentence will be needed to restore the wallet on a different computer.
 
-## To unlock your wallet:
+### Unlock wallet:
 ```
 ocker-compose exec node unlock
 ```
 
-## To get all addresses of your wallet:
+### Retrieve all wallet addresses: 
 ```
 docker-compose exec node addresses
 ```
 
-## To get the status of your wallet:
+### Wallet status: 
 ```
 docker-compose exec node status
 ```
 
-## To access Chain Grabber DB:
+### Access Chain Grabber DB:
 ```
 psql -U <POSTGRES_USER> explorer
 ```
 
-## To get the status of your wallet:
+### View web UI:
+* Open a browser and go to http://localhost:9053/panel
+
+## Troubleshooting
+
+### If Postgres port 5432 is already in use...
+
+If you already have Postgres running locally, change the port for the postgres service in docker-compose.yml.  For example, 5433:5432 will expose it as 5433 locally (it will remain 5432 internally).
+
 ```
-docker-compose exec node status
+    ports:
+      - "5433:5432"
 ```
 
-## To view the UI:
-* Open a browser and go to http://localhost:9053/panel
+### If port 80 is already in use...
+
+If you already have something running on port 80, change the port for the node service.  For example, 8080:9053 would expose it as 8080.
+
+```
+    ports:
+      - "8080:9053"
+```
+
+
