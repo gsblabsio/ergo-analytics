@@ -7,7 +7,7 @@
 cp sample.env .env
 ```
 
-### Update .env config variables to something secure
+### Update .env config variables to something secure (Note: POSTGRES variables are only used when postgres starts the first time).
 ```
 API_KEY=banana apple big pear
 POSTGRES_USER=ergo
@@ -60,7 +60,7 @@ docker-compose exec node addresses
 docker-compose exec node status
 ```
 
-## To access Chain Grabber DB:
+## To access Chain Grabber DB (add -p <port> if port changed):
 ```
 psql -U <POSTGRES_USER> explorer
 ```
@@ -71,4 +71,4 @@ docker-compose exec node status
 ```
 
 ## To view the UI:
-* Open a browser and go to http://localhost:9053/panel
+* Open a browser and go to http://localhost/panel
