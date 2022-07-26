@@ -7,7 +7,7 @@
 cp sample.env .env
 ```
 
-### Update .env config variables to something secure
+### Update .env config variables
 ```
 API_KEY=banana apple big pear
 POSTGRES_USER=ergo
