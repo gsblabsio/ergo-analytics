@@ -19,7 +19,7 @@ POSTGRES_PASSWORD=changeme
 docker-compose up -d
 ``` 
 
-## Tips
+## Commands
 
 ### Current info about your node:
 ```
@@ -35,7 +35,7 @@ This will return a 15 word mnemonic seed phrase. It can only be run once.  You m
 
 ### Unlock wallet:
 ```
-ocker-compose exec node unlock
+docker-compose exec node unlock
 ```
 
 ### Retrieve all wallet addresses: 
@@ -60,7 +60,7 @@ psql -U <POSTGRES_USER> explorer
 
 ### If Postgres port 5432 is already in use...
 
-If you already have Postgres running locally, change the port for the postgres service in docker-compose.yml.  For example, 5433:5432 will expose it as 5433 locally (it will remain 5432 internally).
+If you already have Postgres running locally, change the port for the postgres service in `docker-compose.yml`.  For example, 5433:5432 will expose it as 5433 locally (it will remain 5432 internally).
 
 ```
     ports:
@@ -69,7 +69,7 @@ If you already have Postgres running locally, change the port for the postgres s
 
 ### If port 80 is already in use...
 
-If you already have something running on port 80, change the port for the node service.  For example, 8080:9053 would expose it as 8080.
+If you already have something running on port 80, change the port for the node service in the `docker-compose.yml` file.  For example, 8080:9053 would expose it as 8080.
 
 ```
     ports:
