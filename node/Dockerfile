@@ -12,7 +12,7 @@ WORKDIR /home/ergo
 ENV PATH="/home/ergo:${PATH}"
 ADD ./ergo.conf .
 ADD ./docker-entrypoint.sh .
-ADD ./commands/* .
+ADD ./commands/* ./
 
 USER ergo
 
