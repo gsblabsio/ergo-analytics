@@ -7,7 +7,10 @@
 cp sample.env .env
 ```
 
-### Update .env config variables (Note: POSTGRES variables are only used when postgres starts the first time).
+### Update .env config variables
+
+> Note: POSTGRES variables are only used when postgres starts the first time.
+
 ```
 API_KEY=banana apple big pear
 POSTGRES_USER=ergo
