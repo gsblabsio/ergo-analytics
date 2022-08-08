@@ -56,19 +56,19 @@ docker-compose exec node addresses
 docker-compose exec node status
 ```
 
-### Access Chain Grabber DB (add -p <port> if port changed):
+### Access Chain Grabber DB (add -p <port> if port changed)
 ```
 psql -U <POSTGRES_USER> explorer
 ```
 
-### View web UI:
+### View web UI
 * Open a browser and go to http://localhost/panel
 
 ## Troubleshooting
 
 ### If Postgres port 5432 is already in use...
 
-If you already have Postgres running locally, change the port for the postgres service in `docker-compose.yml`.  For example, 5433:5432 will expose it as 5433 locally (it will remain 5432 internally).
+Change the port for the postgres service in `docker-compose.yml`.  For example, 5433:5432 will expose it as 5433 locally (it will remain 5432 internally).
 
 ```
     ports:
@@ -77,7 +77,7 @@ If you already have Postgres running locally, change the port for the postgres s
 
 ### If port 80 is already in use...
 
-If you already have something running on port 80, change the port for the node service in the `docker-compose.yml` file.  For example, 8080:9053 would expose it as 8080.
+Change the port for the node service in the `docker-compose.yml` file.  For example, 8080:9053 would expose it as 8080.
 
 ```
     ports:
