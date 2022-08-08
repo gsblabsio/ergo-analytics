@@ -1,5 +1,7 @@
 # ergo-analytics
 
+The essentials for a blockchain analyst or data scientist who want to extract insights from the Ergo network using Docker.
+
 ## Quickstart
 
 ### Create a .env file
@@ -12,41 +14,44 @@ cp sample.env .env
 > Note: POSTGRES variables are only used when postgres starts the first time.
 
 ```
-API_KEY=banana apple big pear
+# node settings
+API_KEY=
+
+# explorer config
 POSTGRES_USER=ergo
 POSTGRES_PASSWORD=changeme
 ```
 
-### Start the Node / Chain Grabber
+### Start the Node & Chain Grabber
 ```
 docker-compose up -d
 ``` 
 
 ## Commands
 
-### Current info about your node:
+### Current info about your node
 ```
 docker-compose exec node info
 ```
 
-### Initialize node wallet:
+### Initialize node wallet
 ```
 docker-compose exec node initialize
 ```
 
 This will return a 15 word mnemonic seed phrase. It can only be run once.  You must copy this sentence and save it in a safe place. This sentence will be needed to restore the wallet on a different computer.
 
-### Unlock wallet:
+### Unlock wallet
 ```
 docker-compose exec node unlock
 ```
 
-### Retrieve all wallet addresses: 
+### Retrieve all wallet addresses
 ```
 docker-compose exec node addresses
 ```
 
-### Wallet status: 
+### Wallet status
 ```
 docker-compose exec node status
 ```
