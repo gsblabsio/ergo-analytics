@@ -66,6 +66,15 @@ psql -U <POSTGRES_USER> explorer
 
 ## Troubleshooting
 
+### Upgrading node
+
+```
+docker pull ergoplatform/ergo:latest
+docker-compose stop 
+docker-compose build node
+docker-compose up -d
+```
+
 ### If Postgres port 5432 is already in use...
 
 Change the port for the postgres service in `docker-compose.yml`.  For example, 5433:5432 will expose it as 5433 locally (it will remain 5432 internally).
