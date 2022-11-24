@@ -9,9 +9,11 @@ sed -i "s/redis:\/\/localhost:6380/redis:\/\/redis:6379/g" modules/chain-grabber
 
 export PGPASSWORD="$POSTGRES_PASSWORD"
 
-if [ "$( psql -h postgres -U "$POSTGRES_USER" -XtAc "SELECT 1 FROM pg_database WHERE datname='explorer'" )" != '1' ]
+if [ "$( psql -h postgres -U "$POSTGRES_USER" -XtAc "SELECT 1 FROM information_schema.tables WHERE table_schema='public'" -d explorer )" != '1' ]
 then
-	psql -h postgres -U "$POSTGRES_USER" -c "CREATE DATABASE explorer"
+	sed -i "s/READONLY_USER/$READONLY_USER/g" ../readonly.sql
+	sed -i "s/READONLY_PASSWORD/$READONLY_PASSWORD/g" ../readonly.sql
+	psql -h postgres -U "$POSTGRES_USER" -d explorer -f ../readonly.sql
 	cat modules/explorer-core/src/main/resources/db/V9__Schema.sql | psql -h postgres -U "$POSTGRES_USER" explorer
 fi
 

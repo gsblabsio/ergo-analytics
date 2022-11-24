@@ -29,6 +29,7 @@ services:
   postgres:
     image: postgres:13
     environment:
+      - POSTGRES_DB=explorer
       - PGDATA=/pgdata
     env_file: .env
     logging:

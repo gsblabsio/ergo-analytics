@@ -28,5 +28,7 @@ RUN apt install postgresql-client -y
 
 # Set up entrypoint
 ADD ./docker-entrypoint.sh .
+ADD ./readonly.sql .
+
 WORKDIR /explorer-backend-$EXPLORER_VERSION
 ENTRYPOINT ["/docker-entrypoint.sh"]
